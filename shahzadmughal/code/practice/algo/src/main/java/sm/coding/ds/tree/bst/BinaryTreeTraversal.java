@@ -1,5 +1,10 @@
 package sm.coding.ds.tree.bst;
-
+/**
+ * Tree traversal are same for binary tree and binary search tree(BST).
+ * 
+ * @author smughal
+ *
+ */
 public class BinaryTreeTraversal {
 
 	/**
