@@ -1,7 +1,7 @@
 /**
  * 
  */
-package sm.coding.ds.llstq.lru.cache.simple;
+package sm.code.ds.llstq.lru.cache.generic;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,23 @@ import java.util.Map;
  * @author smughal
  *
  */
-public class SimpleLruCache {
+public class GenericLruCache<K, V> {
 
 	private int capacity;
-	private Map<Object, Node> map;
-	private Node head;
-	private Node tail;	
+	private Map<K, Node<K,V>> map;
+	private Node<K,V> head;
+	private Node<K,V> tail;	
 	
 	/**
 	 * 
 	 */
-	public SimpleLruCache(int capacity) {
+	public GenericLruCache(int capacity) {
 		this.capacity = capacity;
 		map = new HashMap<>();
 	}
 	
-	public void put(Object key, Object value) {
-		Node n = null;
+	public void put(K key, V value) {
+		Node<K,V> n = null;
 		if(!map.containsKey(key)) {
 			if(map.size()==capacity) {
 				map.remove(tail.key);
@@ -44,10 +44,10 @@ public class SimpleLruCache {
 		map.put(key, n);
 	}
 	
-	public Object get(Object key) {
+	public V get(K key) {
 		if(null!=key) {
 			if(map.containsKey(key)) {
-				Node n = map.get(key);
+				Node<K,V> n = map.get(key);
 				removeNode(n);
 				makeHead(n);
 				return n.value;
@@ -67,8 +67,8 @@ public class SimpleLruCache {
 		}
 	}
 	
-	public Object delete(Object key) {
-		Node n = map.get(key);
+	public V delete(K key) {
+		Node<K,V> n = map.get(key);
 		if(null!=n) {
 			removeNode(n);
 			return n.value;			
@@ -98,7 +98,7 @@ public class SimpleLruCache {
 	}
 
 	public static void main(String[] args) {
-		SimpleLruCache cache = new SimpleLruCache(3);
+		GenericLruCache<String, String> cache = new GenericLruCache<>(3);
 		cache.put("A", "a_value");
 		cache.put("B", "a_value");
 		cache.put("C", "a_value");
@@ -116,13 +116,13 @@ public class SimpleLruCache {
  * @author smughal
  *
  */
-class Node{
-	public Object key;
-	public Object value;
-	public Node next;
-	public Node previous;
+class Node<K,V>{
+	public K key;
+	public V value;
+	public Node<K,V> next;
+	public Node<K,V> previous;
 	
-	public Node(Object key, Object value) {
+	public Node(K key, V value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -131,4 +131,5 @@ class Node{
 	public String toString() {
 		return "Node [key=" + key + ", value=" + value + "]";
 	}
+	
 }
