@@ -19,7 +19,6 @@ public class GraphTest {
         System.out.println("Detect Cycle");
         System.out.println("############################");
         detectCycleTest();
-//        detectPath();
     }
     
     public static void alienLanguageTest(){
