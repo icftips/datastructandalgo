@@ -19,9 +19,10 @@ public class BoggleSolver {
     public static List<String> boggleSolver(Character[][] adjMat) {
         List<String> result = new ArrayList<>();
         boolean isvisited[][]=new boolean[adjMat.length][adjMat[0].length];
+        StringBuilder prefix= new StringBuilder();
+
         for(int r=0;r<adjMat.length;r++ ){
             for(int c=0;c<adjMat.length;c++ ){
-                StringBuilder prefix= new StringBuilder();
                 boggleSolverUtil(adjMat,isvisited, r,c,prefix,result);
             }
         }

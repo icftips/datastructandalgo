@@ -1,5 +1,5 @@
 
-package com.icftips.sortinghw.graph;
+package com.icftips.graph.homework;
 
 import java.util.LinkedList;
 
