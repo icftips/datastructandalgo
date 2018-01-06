@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MergeSortArrays {
+
+
+
+    static int[] mergeFirstIntoAnother(int[] intArrShort, int[] intArrLong) {
+
+        int j = intArrLong.length-1;
+        int s = intArrShort.length-1;
+        int l = intArrShort.length-1;
+        while (j>=0)
+         {
+             if (s < 0)
+                 return intArrLong;
+             if (l < 0) {
+                 intArrLong[j--] = intArrShort[s--];
+                 continue;
+             }
+             if (intArrShort[s] > intArrLong[l])
+                 intArrLong[j--] = intArrShort[s--];
+             else
+                 intArrLong[j--] = intArrLong[l--];
+         }
+        return intArrLong;
+    }
+
+    public static void main(String[] args) {
+
+       int[] N1 = {5,7,7,8};
+       int [] N2 =  {4,10,12,14,0,0,0,0};
+       int[] N3 = mergeFirstIntoAnother(N1,N2);
+        for (int i = 0; i < N3.length; i++) {
+            System.out.println(N3[i]);
+        }
+
+
+
+    }
+
+}
