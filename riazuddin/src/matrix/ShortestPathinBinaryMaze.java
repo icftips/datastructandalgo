@@ -26,8 +26,8 @@ public class ShortestPathinBinaryMaze {
 
 		// rows and cols are indexes of neighbor 8 cells, to check if a cell is within
 		// boundary
-		int[] rows = { 1, 0, -1, 0 };
-		int[] cols = { 0, 1, 0, -1 };
+		int[] rows = { 0, 0, -1, 1 };
+		int[] cols = { -1, 1, 0, 0 };
 
 		Queue<Point> path = new LinkedList<>();
 		// begin with source cell;
@@ -36,19 +36,20 @@ public class ShortestPathinBinaryMaze {
 		int shortestPath = 0;
 		while (!path.isEmpty()) {
 			Point p = path.remove();
+
+			if (p.i == destRow && p.j == destCol)
+				return shortestPath;
+			shortestPath++;
+			
 //			System.out.println("p["+p.i+"]["+p.j+"]");
 			for (int i = 0; i < 4; i++) {
 				int newRow = p.i + rows[i];
 				int newCol = p.j + cols[i];
-
-				if (newRow == destRow && newCol == destCol)
-					return shortestPath;
 				
-				if (isSafe(m, newRow, newCol) && !visited[newRow][newCol]) {
+				if (isSafe(destRow, destCol, newRow, newCol) && !visited[newRow][newCol] && m[newRow][newCol] == 1) {
 //					System.out.println("m["+newRow+"]["+newCol+"] ");
 					visited[newRow][newCol] = true;
 					path.add(new Point(newRow, newCol));
-					shortestPath++;
 				}
 			}
 		}
@@ -56,11 +57,11 @@ public class ShortestPathinBinaryMaze {
 		return shortestPath;
 	}
 
-	public static boolean isSafe(int[][] m, int row, int col) {
-		if (row >= 0 && row < m.length && col >= 0 && col < m[0].length && m[row][col] == 1)
-				return true;
+	public static boolean isSafe(int destR, int destC, int row, int col) {
+		if (row < 0 || row > destR || col < 0 || col > destC)
+				return false;
 
-		return false;
+		return true;
 	}
 
 	static class Point {
