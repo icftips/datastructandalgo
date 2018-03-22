@@ -15,7 +15,7 @@ public class Sort2dArrayRowwiseBubbleSort {
 	static void sort(int m[][]) {
 		for(int i = 0; i<m.length; i++) {
 			for(int j = 0; j < m[i].length; j++) {
-				for(int k = 0; k < m[i].length - j -1; k++) {
+				for(int k = 0; k < m[i].length - 1; k++) {
 					if(m[i][k] > m[i][k + 1]) {
 						int t = m[i][k];
 						m[i][k] = m[i][k+1];
