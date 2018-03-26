@@ -2,6 +2,16 @@ package string;
 
 /*
  * https://www.geeksforgeeks.org/longest-common-subsequence/
+ * 
+ * Steps lcsLength
+ * 	1. Start from the end of strings s1 and s2, for each char
+ * 	2. if same, increment LCS length and repeat for lcsLength(s1--, s2--) in both strings
+ * 	3. if different, 
+ * 		repeat for lcsLength(s1, s2--) and lcsLength(s1--, s2)
+ * 
+ * 
+ * Time Complexity: 2pow(max(m,n)) where m = len(s1), n = len(s2)
+ * 
  */
 public class LongestCommonSubsequenceLengthRecursion {
 
