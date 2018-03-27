@@ -2,8 +2,9 @@ package dp;
 /*
  * https://www.geeksforgeeks.org/dynamic-programming-set-31-optimal-strategy-for-a-game/
  * https://stackoverflow.com/questions/22195300/understanding-solution-to-finding-optimal-strategy-for-game-involving-picking-po
+ * https://algorithms.tutorialhorizon.com/dynamic-programming-coin-in-a-line-game-problem/
  */
-public class CoinPlayRecursion {
+public class CoinPlayOptimalStrategyRecursion {
 	public static void main(String[] args) {
 		int[] coins = {8, 15, 3, 7};
 		System.out.println(coinPlay(coins, 0, coins.length - 1));
