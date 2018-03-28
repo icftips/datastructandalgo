@@ -22,6 +22,7 @@ public class EditDistanceDP {
 				}
 			}
 		}
+		
 		Matrix.print(dp);
 		return dp[s.length()][t.length()];
 	}
