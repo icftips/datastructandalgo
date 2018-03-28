@@ -7,7 +7,7 @@ package dp;
 public class EditDistanceRecursion {
 
 	public static void main(String[] args) {
-		String s = "cut", t = "cat";
+		String s = "cut", t = "catter";
 		System.out.println(editDistance(s, t, s.length() - 1, t.length() - 1));
 	}
 	static int editDistance(String s, String t, int sl, int tl) {
