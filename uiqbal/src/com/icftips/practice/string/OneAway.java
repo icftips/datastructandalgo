@@ -13,6 +13,8 @@ public class OneAway {
         System.out.println(oneAway("pales", "pale")==true);
         System.out.println(oneAway("pale", "bale")==true);
         System.out.println(oneAway("pale", "bake")==false);
+        // fixed this test case 4/10
+        System.out.println(oneAway("pales", "pade")==false);
         
         System.out.println(oneAway("", "")==true);
         System.out.println(oneAway("", " ")==true);
@@ -39,6 +41,6 @@ public class OneAway {
             
         }
         
-        return diff<2;
+        return (l1-x) + (l2-y) + diff < 2;
     }
 }
